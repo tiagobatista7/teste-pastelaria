@@ -14,13 +14,8 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-    public function __construct(private UserRepository $userRepository)
-    { 
-    }
+    public function __construct(private UserRepository $userRepository) {}
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $users = $this->userRepository->getPaginate(
@@ -31,18 +26,12 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreUserRequest $request)
     {
-        $user = $this->userRepository->createNew(new CreateUserDTO(... $request->validated()));
+        $user = $this->userRepository->createNew(new CreateUserDTO(...$request->validated()));
         return new UserResource($user);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         if (!$user = $this->userRepository->findById($id)) {
@@ -51,9 +40,6 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateUserRequest $request, string $id)
     {
         $response = $this->userRepository->update(new EditUserDTO(...[$id, ...$request->validated()]));
@@ -63,9 +49,6 @@ class UserController extends Controller
         return response()->json(['message' => 'user updated with success']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         if (!$this->userRepository->delete($id)) {

@@ -11,10 +11,9 @@ Crie o Arquivo .env
 cp .env.example .env
 ```
 
-
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME=EspecializaTi
+APP_NAME=Pastelaria
 APP_URL=http://localhost:8989
 
 DB_CONNECTION=mysql
@@ -68,6 +67,11 @@ composer require pestphp/pest --dev --with-all-dependencies
 Instale plugins Pest para o Laravel
 ```sh
 composer require pestphp/pest-plugin-laravel --dev
+```
+
+Instale as migrações e popule as tabelas
+```sh
+php artisan migrate:refresh --seed
 ```
 
 Acesse o projeto

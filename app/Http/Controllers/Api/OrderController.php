@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\UpdateOrderRequest;
 use App\Models\Order;
-use App\Http\Requests\OrderRequest;
 use App\Http\Requests\StoreOrderRequest;
 use App\Services\OrderService;
 use Symfony\Component\HttpFoundation\Response;

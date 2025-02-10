@@ -15,12 +15,10 @@ use Illuminate\Http\Response;
 class PermissionController extends Controller
 {
     public function __construct(private PermissionRepository $permissionRepository)
-    { 
+    {
+        //
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $permissions = $this->permissionRepository->getPaginate(
@@ -31,18 +29,12 @@ class PermissionController extends Controller
         return PermissionResource::collection($permissions);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StorePermissionRequest $request)
     {
-        $permission = $this->permissionRepository->createNew(new CreatePermissionDTO(... $request->validated()));
+        $permission = $this->permissionRepository->createNew(new CreatePermissionDTO(...$request->validated()));
         return new PermissionResource($permission);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         if (!$permission = $this->permissionRepository->findById($id)) {
@@ -51,9 +43,6 @@ class PermissionController extends Controller
         return new PermissionResource($permission);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdatePermissionRequest $request, string $id)
     {
         $response = $this->permissionRepository->update(new EditPermissionDTO(...[$id, ...$request->validated()]));
@@ -63,9 +52,6 @@ class PermissionController extends Controller
         return response()->json(['message' => 'permission updated with success']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         if (!$this->permissionRepository->delete($id)) {
