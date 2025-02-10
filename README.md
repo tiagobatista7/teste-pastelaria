@@ -5,7 +5,7 @@
 Clone Repositório
 ```sh
 git clone https://github.com/tiagobatista7/teste-pastelaria.git
-
+```
 Crie o Arquivo .env
 ```sh
 cp .env.example .env
