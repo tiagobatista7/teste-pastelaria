@@ -1,14 +1,20 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthApiController;
+use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PermissionUserController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/me', [AuthApiController::class, 'me'])->name('auth.me')->middleware('auth:sanctum');
 Route::post('/logout', [AuthApiController::class, 'logout'])->name('auth.logout')->middleware('auth:sanctum');
 Route::post('/auth', [AuthApiController::class, 'auth'])->name('auth.login');
+
+Route::apiResource('customers', CustomerController::class);
+Route::apiResource('orders', CustomerController::class);
+Route::apiResource('products', ProductController::class);
 
 Route::middleware(['auth:sanctum', 'acl'])->group(function () {
     Route::apiResource('/permissions', PermissionController::class);
@@ -22,4 +28,4 @@ Route::middleware(['auth:sanctum', 'acl'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });
 
-Route::get('/', fn () => response()->json(['message' => 'ok']));
+Route::get('/', fn() => response()->json(['message' => 'ok']));

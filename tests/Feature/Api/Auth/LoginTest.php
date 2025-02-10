@@ -4,7 +4,7 @@ use App\Models\User;
 
 use function Pest\Laravel\postJson;
 
-it('should auth user', function () {
+it('autentica o usuário', function () {
 
     $user = User::factory()->create();
 
@@ -19,7 +19,7 @@ it('should auth user', function () {
 });
 
 
-it('should fail auth - with wrhong password', function () {
+it('deve falhar na autenticação - com senha errada', function () {
 
     $user = User::factory()->create();
 
@@ -33,7 +33,7 @@ it('should fail auth - with wrhong password', function () {
 });
 
 
-it('should fail auth - with wrhong email', function () {
+it('deve falhar na autenticação - com e-mail errado', function () {
 
     $user = User::factory()->create();
 
