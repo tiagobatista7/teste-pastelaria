@@ -5,11 +5,6 @@
 Clone Repositório
 ```sh
 git clone https://github.com/tiagobatista7/teste-pastelaria.git
-```
-```sh
-cd app-laravel
-```
-
 
 Crie o Arquivo .env
 ```sh
@@ -64,4 +59,4 @@ php artisan key:generate
 
 
 Acesse o projeto
-[http://localhost:8989](http://localhost:8989)
+[http://localhost:89](http://localhost:89)
