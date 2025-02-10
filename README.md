@@ -4,7 +4,7 @@
 ### Passos
 Clone Repositório
 ```sh
-git clone 
+git clone https://github.com/tiagobatista7/teste-pastelaria.git
 ```
 ```sh
 cd app-laravel
