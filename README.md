@@ -16,10 +16,10 @@ Atualize as variáveis de ambiente do arquivo .env
 APP_NAME=Pastelaria
 APP_URL=http://localhost:8989
 
-DB_CONNECTION=sqlite
+DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=:database/testing.sqlite
+DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=root
 
