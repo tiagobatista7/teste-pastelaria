@@ -28,7 +28,7 @@ class CustomerTest extends TestCase
         config()->set('database.connections.sqlite.database', ':memory:');
     }
 
-    public function test_lista_todos_os_clientes(): void
+    public function test_list_all_clients(): void
     {
         $customers = Customer::factory()->count(3)->make();
 
@@ -41,7 +41,7 @@ class CustomerTest extends TestCase
         $this->assertCount(3, $response->getData());
     }
 
-    public function test_cria_um_cliente(): void
+    public function test_create_a_client(): void
     {
         $data = Customer::factory()->make()->toArray();
         $mock = Mockery::mock(Customer::class)->makePartial();
@@ -53,7 +53,7 @@ class CustomerTest extends TestCase
         $this->assertEquals($data['email'], $customer->email);
     }
 
-    public function test_atualiza_um_cliente_com_repositorio()
+    public function test_update_a_cliente_with_repository()
     {
         $customer = Customer::factory()->create();
         $newData = [

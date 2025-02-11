@@ -15,7 +15,7 @@ class SendOrderEmailJobTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function envia_email_para_cliente_apos_criacao_do_pedido()
+    public function send_email_after_creation_of_order()
     {
         Mail::fake();
         $customer = Customer::factory()->create([

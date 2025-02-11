@@ -1,6 +1,6 @@
 <?php
 
-test('lista todos os clientes', function () {
+test('list all customers', function () {
     \App\Models\Customer::factory()->count(3)->create();
 
     $response = $this->getJson('/customers');
@@ -9,7 +9,7 @@ test('lista todos os clientes', function () {
         ->assertJsonCount(3);
 });
 
-test('cria um cliente', function () {
+test('create a client', function () {
     $data = \App\Models\Customer::factory()->make()->toArray();
 
     $response = $this->postJson('/customers', $data);
@@ -20,7 +20,7 @@ test('cria um cliente', function () {
     $this->assertDatabaseHas('customers', ['email' => $data['email']]);
 });
 
-test('atualiza um cliente', function () {
+test('update a client', function () {
     $customer = \App\Models\Customer::factory()->create();
     $newData = \App\Models\Customer::factory()->make()->toArray();
     $newData['name'] = 'Updated Name';
@@ -34,7 +34,7 @@ test('atualiza um cliente', function () {
     $this->assertDatabaseHas('customers', ['id' => $customer->id, 'name' => 'Updated Name']);
 });
 
-test('exclui um cliente', function () {
+test('delete a customer', function () {
     $customer = \App\Models\Customer::factory()->create();
 
     $response = $this->deleteJson("/customers/{$customer->id}");

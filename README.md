@@ -83,7 +83,12 @@ php artisan queue:work --tries=3
 php artisan schedule:work
 ```
 
-
 Acesse o projeto e confira a retorno se está "ok"
 [http://localhost:89](http://localhost:89)
+
+
+Para efetuar todos os testes, no terminal digite o comando:
+```sh
+php artisan test
+```
 

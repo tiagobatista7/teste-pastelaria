@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('cria um pedido', function () {
+test('create an order', function () {
     $customer = Customer::factory()->create();
     $product = Product::factory()->create();
 
@@ -30,8 +30,7 @@ test('cria um pedido', function () {
     $this->assertInstanceOf(Order::class, $order);
 });
 
-
-test('atualiza um pedido', function () {
+test('update an order', function () {
     $customer = Customer::factory()->create();
     $productOriginal = Product::factory()->create();
 
@@ -58,7 +57,7 @@ test('atualiza um pedido', function () {
     $this->assertEquals($productNew->id, $updatedOrder->product_id);
 });
 
-test('dispara o job de envio de e-mail ao criar pedido', function () {
+test('triggers the email sending job when creating order', function () {
     Queue::fake();
 
     $customer = Customer::factory()->create();

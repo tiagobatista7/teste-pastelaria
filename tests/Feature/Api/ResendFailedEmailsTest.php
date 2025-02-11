@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 uses(RefreshDatabase::class);
 
-test('reenfila pedidos não confirmados por e-mail em 2 minutos', function () {
+test('requeues unconfirmed orders via email within 2 minutes', function () {
     Queue::fake();
 
     $customer = \App\Models\Customer::factory()->create();

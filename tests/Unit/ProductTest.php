@@ -17,7 +17,7 @@ class ProductTest extends TestCase
         config()->set('database.connections.sqlite.database', ':memory:');
     }
 
-    public function test_cria_um_produto(): void
+    public function test_create_a_product(): void
     {
         $data = [
             'name' => 'Produto Teste',
@@ -37,7 +37,7 @@ class ProductTest extends TestCase
         $this->assertEquals($data['photo'], $product->photo);
     }
 
-    public function test_atualiza_um_produto(): void
+    public function test_update_a_product(): void
     {
         $product = Product::factory()->create([
             'name' => 'Nome Antigo',
@@ -64,7 +64,7 @@ class ProductTest extends TestCase
         $this->assertEquals($newData['price'], $updatedProduct->price);
     }
 
-    public function test_exclui_um_produto(): void
+    public function test_exclude_a_product(): void
     {
         $product = Product::factory()->create();
 

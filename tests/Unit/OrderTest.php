@@ -22,7 +22,7 @@ class OrderTest extends TestCase
         Artisan::call('migrate');
     }
 
-    public function test_cria_um_pedido(): void
+    public function test_create_an_order(): void
     {
         $customer = Customer::factory()->create();
         $product = Product::factory()->create();
@@ -44,7 +44,7 @@ class OrderTest extends TestCase
         $this->assertEquals($data['product_id'], $order->product_id);
     }
 
-    public function test_atualiza_um_pedido(): void
+    public function test_update_an_order(): void
     {
         $customer = Customer::factory()->create();
         $productOriginal = Product::factory()->create();

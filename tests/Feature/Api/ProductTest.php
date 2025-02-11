@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('lista todos os produtos', function () {
+test('list all products', function () {
     Product::factory()->count(5)->create();
 
     $response = $this->getJson('/products');
@@ -15,7 +15,7 @@ test('lista todos os produtos', function () {
         ->assertJsonCount(5, 'data');
 });
 
-test('cria um produto', function () {
+test('create a product', function () {
     $data = [
         'name' => 'Produto Teste',
         'price' => 99.99,
@@ -34,7 +34,7 @@ test('cria um produto', function () {
     $this->assertInstanceOf(Product::class, $product);
 });
 
-test('exibe um produto', function () {
+test('displays a product', function () {
     $product = Product::factory()->create();
 
     $response = $this->getJson("/products/{$product->id}");
@@ -47,7 +47,7 @@ test('exibe um produto', function () {
         ]);
 });
 
-test('atualiza um produto', function () {
+test('update a product', function () {
     $product = Product::factory()->create([
         'name' => 'Nome Antigo',
         'price' => 50.00,
@@ -71,7 +71,7 @@ test('atualiza um produto', function () {
     $this->assertEquals(75.00, $updatedProduct->price);
 });
 
-test('exclui um produto', function () {
+test('delete a product', function () {
     $product = Product::factory()->create();
 
     $productService = new ProductService();
