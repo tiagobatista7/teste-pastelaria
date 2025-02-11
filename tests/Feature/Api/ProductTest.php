@@ -17,7 +17,7 @@ test('list all products', function () {
 
 test('create a product', function () {
     $data = [
-        'name' => 'Produto Teste',
+        'name' => 'Product testing',
         'price' => 99.99,
         'photo' => 'default.jpg',
     ];
@@ -26,7 +26,7 @@ test('create a product', function () {
     $product = $productService->create($data);
 
     $this->assertDatabaseHas('products', [
-        'name' => 'Produto Teste',
+        'name' => 'Product testing',
         'price' => 99.99,
         'photo' => 'default.jpg',
     ]);
@@ -49,12 +49,12 @@ test('displays a product', function () {
 
 test('update a product', function () {
     $product = Product::factory()->create([
-        'name' => 'Nome Antigo',
+        'name' => 'old name',
         'price' => 50.00,
     ]);
 
     $newData = [
-        'name' => 'Nome Atualizado',
+        'name' => 'updated name',
         'price' => 75.00,
     ];
 
@@ -63,11 +63,11 @@ test('update a product', function () {
 
     $this->assertDatabaseHas('products', [
         'id' => $updatedProduct->id,
-        'name' => 'Nome Atualizado',
+        'name' => 'updated name',
         'price' => 75.00,
     ]);
 
-    $this->assertEquals('Nome Atualizado', $updatedProduct->name);
+    $this->assertEquals('updated name', $updatedProduct->name);
     $this->assertEquals(75.00, $updatedProduct->price);
 });
 
