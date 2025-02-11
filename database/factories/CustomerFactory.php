@@ -2,29 +2,26 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
 class CustomerFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Customer::class;
+
+    public function definition()
     {
+        $faker = \Faker\Factory::create('pt_BR');
+
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'phone' => $this->faker->phoneNumber(),
-            'birth_date' => $this->faker->date(),
-            'address' => $this->faker->streetAddress(),
-            'complement' => $this->faker->secondaryAddress(),
-            'neighborhood' => $this->faker->city(),
-            'zip_code' => $this->faker->postcode(),
+            'name' => $faker->name,
+            'email' => $faker->unique()->safeEmail(),
+            'phone' => $faker->phoneNumber(),
+            'birth_date' => $faker->date(),
+            'address' => $faker->streetAddress(),
+            'complement' => $faker->secondaryAddress(),
+            'neighborhood' => $faker->city(),
+            'zip_code' => $faker->postcode(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

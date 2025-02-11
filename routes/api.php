@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\AuthApiController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PermissionUserController;
 use App\Http\Controllers\Api\ProductController;
@@ -13,8 +14,10 @@ Route::post('/logout', [AuthApiController::class, 'logout'])->name('auth.logout'
 Route::post('/auth', [AuthApiController::class, 'auth'])->name('auth.login');
 
 Route::apiResource('customers', CustomerController::class);
-Route::apiResource('orders', CustomerController::class);
+Route::put('/customers/{id}', [CustomerController::class, 'update']);
+Route::apiResource('orders', OrderController::class);
 Route::apiResource('products', ProductController::class);
+
 
 Route::middleware(['auth:sanctum', 'acl'])->group(function () {
     Route::apiResource('/permissions', PermissionController::class);
