@@ -28,6 +28,11 @@ class order extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'order_product');
+    }
+
     public static function boot()
     {
         parent::boot();

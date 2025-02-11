@@ -1,9 +1,11 @@
 <?php
 
+use App\Jobs\SendOrderEmailJob;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Services\OrderService;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
@@ -54,4 +56,23 @@ test('atualiza um pedido', function () {
     ]);
 
     $this->assertEquals($productNew->id, $updatedOrder->product_id);
+});
+
+test('dispara o job de envio de e-mail ao criar pedido', function () {
+    Queue::fake();
+
+    $customer = Customer::factory()->create();
+    $product = Product::factory()->create();
+
+    $data = [
+        'customer_id' => $customer->id,
+        'product_id' => $product->id,
+    ];
+
+    $orderService = new OrderService();
+    $order = $orderService->store($data);
+
+    Queue::assertPushed(SendOrderEmailJob::class, function ($job) use ($order) {
+        return $job->getOrder()->id === $order->id;
+    });
 });

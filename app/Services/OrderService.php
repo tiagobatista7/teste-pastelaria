@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\SendOrderEmailJob;
 use App\Models\Order;
 use App\Models\Product;
 
@@ -9,7 +10,11 @@ class OrderService
 {
     public function create(array $data)
     {
-        return Order::create($data);
+        $order = Order::create($data);
+
+        // Enfileirar o job para enviar o e-mail
+        dispatch(new SendOrderEmailJob($order));
+        return $order;
     }
 
     public function store(array $data)

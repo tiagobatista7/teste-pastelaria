@@ -71,6 +71,19 @@ Instale as migrações e popule as tabelas
 php artisan migrate:refresh --seed
 ```
 
+Tabelas e migrações de filas para envio de emails
+```sh
+php artisan queue:table
+php artisan migrate
+```
+
+Processar as filas
+```sh
+php artisan queue:work --tries=3
+php artisan schedule:work
+```
+
+
 Acesse o projeto e confira a retorno se está "ok"
 [http://localhost:89](http://localhost:89)
 
